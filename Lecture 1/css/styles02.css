@@ -1,0 +1,22 @@
+h1 {
+    color: orange;
+    background-color: green;
+    font-size: 40px;
+    text-decoration: line-through;
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+}
+
+p {
+    color:green;
+    line-height: 30px;
+    letter-spacing: 3px;
+    column-count: 3;
+    column-gap: 30px;
+}
+
+li {
+    list-style-type: none;
+    text-shadow: 2px 2px gray;
+}
+
