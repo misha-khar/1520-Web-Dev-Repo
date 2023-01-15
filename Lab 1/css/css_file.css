@@ -1,15 +1,42 @@
-h1{
-    color: blue;
-    text-align: center;
+#bgColor {
+    background-color: lightblue;
 }
-#h1{
-    color: orange;
-    text-align: center;
-}
-h2{
+
+#greenText {
     color: green;
 }
-.list{
-    color: brown;
-    font-size: 20px;
+
+.redText {
+    color: red;
+}
+
+.orangeText {
+    color: orange;
+}
+
+img {
+    width: 400px;
+    height: 500px;
+}
+
+a:link {
+    color: red;
+}
+
+a:visited {
+    color: green;
+}
+
+a:hover {
+    color: hotpink;
+}
+
+a:active {
+    color: blue;
+}
+
+table,
+th,
+td {
+    border: 2px solid black;
 }

@@ -7,28 +7,97 @@ CS1520 Spring 2023 -->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HTML & CSS Lab</title>
+    <title>Document</title>
     <link rel="stylesheet" href="css/css_file.css">
 </head>
 
 <body>
-    <h1>HTML & CSS Lab</h1>
-    <h1 id="h1">Misha Personal Page</h1>
-    <img src="imgs/cooking_img.jpg" alt="food">
-    <h2>General Info</h2>
-
-    <ul class="list">
-        <li>name: Paulo Brasko</li>
-        <li>email: brasko@pitt.edu</li>
-        <li>address: 123 Banana street, PA</li>
+    <h1>This is a Heading 1</h1>
+    <h2 id="bgColor">This is a Heading 2 with background color (use id)</h2>
+    <h2 id="greenText">This is a heading 2 with green text (use id)</h2>
+    <h3 class="redText">This is a heading 3 with red color. Use class</h3>
+    <h3>Another Heading 3 here with no red color</h3>
+    <p class="redText">This is a paragraph that has the same format (red color) as the first h3 heading (use class)</p>
+    Unordered list of things to buy. Unordered and ordered lists are in orange (use class)
+    <ul class="orangeText">
+        <li>bananas</li>
+        <li>apples</li>
+        <li>strawberries</li>
     </ul>
-
-    <h2>Hobbies</h2>
-    <ul class="list">
-        <li>Cooking</li>
-        <li>Running</li>
-        <li>Coding</li>
-    </ul>
+    Ordered list of steps to print a Document
+    <ol class="orangeText">
+        <li>Go to File menu</li>
+        <li>Select the Print... option</li>
+        <li>Select the printer</li>
+        <li>Click on the Print button</li>
+    </ol>
+    image with width=400px and height=500px
+    <br><br>
+    <img src="imgs/drink_img.jpg">
+    <br><br><br>
+    the link below must have the following features: unvisited link: red visited link: green mouse over: hotpink
+    selected: blue;
+    <br><br>
+    <a href="https://google.com">This is a link to google search</a>
+    <br><br>
+    This is a table with a 2px solid black color
+    <table>
+        <tr>
+            <th>Company</th>
+            <th>Contact</th>
+            <th>Country</th>
+        </tr>
+        <tr>
+            <td>Alfreds Futterkiste</td>
+            <td>Maria Anders</td>
+            <td>Germany</td>
+        </tr>
+        <tr>
+            <td>Centro comercial Moctezuma</td>
+            <td>Francisco Chang</td>
+            <td>Mexico</td>
+        </tr>
+    </table>
+    <br>
+    <h1>HTML Forms</h1>
+    <form action="">
+        <label for="username">Username: </label>
+        <input type="text" id="username" name="username" required>
+        <br>
+        <label for="pittid">Pitt ID: </label>
+        <input type="text" id="pittid" name="pittid" required>
+        <br>
+        <label for="email">email: </label>
+        <input type="email" id="email" name="email" required>
+        <br>
+        <label for="password">Password: </label>
+        <input type="password" id="password" name="password" required>
+        <br><br><br>
+        School Year:
+        <br><br>
+        <input type="radio" name="year" value="freshman" id="option-1">
+        <label for="option-1"> freshman </label>
+        <br>
+        <input type="radio" name="year" value="sophomore" id="option-2">
+        <label for="option-2"> sophomore </label>
+        <br>
+        <input type="radio" name="year" value="junior" id="option-3">
+        <label for="option-3"> junior </label>
+        <br>
+        <input type="radio" name="year" value="senior" id="option-4">
+        <label for="option-4"> senior </label>
+        <br><br>
+        <label for="major">Major</label>
+        <select name="majors">
+            <option value="compSci1">Computer Science</option>
+            <option value="compSci2">Computer Science</option>
+            <option value="compSci3">Computer Science</option>
+        </select>
+        <br><br>
+        <textarea cols="30" rows="10"></textarea>
+        <br><br>
+        <input type="submit" value="submit the form">
+    </form>
 
 </body>
 
