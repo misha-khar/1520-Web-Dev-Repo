@@ -1,0 +1,25 @@
+div {
+    margin: 30px;
+    padding: 30px;
+}
+
+p {
+    /* color: red; */
+}
+
+.error {
+    color: red;
+}
+
+p.error{
+    color: orange;
+}
+
+p.error.feedback{
+    background-color: blue;
+    color: orange;
+}
+
+h2:hover{
+    color: cyan;
+}
