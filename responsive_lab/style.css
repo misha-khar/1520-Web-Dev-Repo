@@ -35,7 +35,7 @@
     
     #featured ul {
         padding: 0;
-        display: block;
+        display: inline-block;
     }
     
     #featured li {
