@@ -8,8 +8,13 @@
     <title>Document</title>
     <link rel="stylesheet" href="css/css_file.css">
 </head>
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 
 <body>
+
+    <button onclick="main()">Click me</button>
+    <div id="myPlot" style="width:100%;max-width:700px"></div>
+
     <script>
 
         // the distance equation
@@ -23,8 +28,32 @@
         };
 
         // generating the distance and velocity arrays based on the time interval
-        const generateDataForPlotting = () => {
-            return 0;
+        const generateDataForPlotting = (data) => {
+            let v0 = data[0];
+            let a = data[1];
+            let tmax = data[2];
+            let plot_type = data[3];
+            // determine time intervals
+            let t_intervals = tmax / 100;
+            let t_arr = new Array(100);
+            let y_arr = new Array(100);
+            // determine time array based on intervals and 100 steps
+            for (let i = 0; i < 100; i++) {
+                t_arr[i] = i * t_intervals;
+                // also generate distance or velocity array based on plot type
+                // if (plot_type.equals("distance")) {
+                //     // distance equation
+                // y_arr[i] = x(v0, a, t_arr[i]);
+                // }
+                // else {
+                //     // velocity equation
+                y_arr[i] = v(v0, a, t_arr[i]);
+                // }
+            }
+            // alert(t_arr);
+            // alert(y_arr);
+            return [t_arr, y_arr];
+
         };
 
         // prompts the user to enter the initial velocity, acceleration, max time, and plot type
@@ -52,15 +81,30 @@
             // for (let i = 0; i < input.length; i++) {
             //     alert(input[i]);
             // }
+            const arrays = generateDataForPlotting(input);
+            alert(arrays[0]);
+            alert(arrays[1]);
 
+            var data = [{
+                x: arrays[0],
+                y: arrays[1],
+                mode: "markers",
+                type: "scatter"
+            }];
+
+            var layout = {
+                xaxis: { range: [0, 100], title: "time" },
+                yaxis: { range: [0, 100], title: "distance" },
+                title: "Distance"
+            };
+
+            Ploty.newPlot("myPlot", data, layout);
 
         }
 
 
     </script>
 
-    <!-- <h1>Test output</h1> -->
-    <button onclick="main()">Click me</button>
 
 </body>
 
