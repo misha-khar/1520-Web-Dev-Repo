@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,12 +8,60 @@
     <title>Document</title>
     <link rel="stylesheet" href="css/css_file.css">
 </head>
+
 <body>
     <script>
-        alert("test alert");
+
+        // the distance equation
+        const x = (v0, a, t) => {
+            return v0 + (a * t);
+        };
+
+        // the velocity equation
+        const v = (v0, a, t) => {
+            return (v0 * t) + (0.5 * a * (t * t));
+        };
+
+        // generating the distance and velocity arrays based on the time interval
+        const generateDataForPlotting = () => {
+            return 0;
+        };
+
+        // prompts the user to enter the initial velocity, acceleration, max time, and plot type
+        var getParameters = () => {
+            // gets initial input from user
+            let input = prompt("Enter parameters (separate w/ comma): v0, a, tmax, plot_type (distance or velocity)");
+            // splits it on the comma 
+            let splitInput = input.split(",");
+            // loop through array
+            for (let i = 0; i < splitInput.length; i++) {
+                // trims the extra spaces
+                splitInput[i] = splitInput[i].trim();
+                // if its one of the first 3 params
+                if (i < 3) {
+                    // parse it into  a float b/c its a string currently
+                    splitInput[i] = parseFloat(splitInput[i]);
+                }
+            }
+            return splitInput;
+        }
+
+        // the main drive of this script
+        main = () => {
+            let input = getParameters();
+            // for (let i = 0; i < input.length; i++) {
+            //     alert(input[i]);
+            // }
+
+
+        }
+
+
     </script>
 
-    <h1>Test output</h1>
-    
+    <!-- <h1>Test output</h1> -->
+    <button onclick="main()">Click me</button>
+
 </body>
+
 </html>
