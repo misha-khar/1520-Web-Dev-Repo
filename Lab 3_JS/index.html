@@ -7,13 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="css/css_file.css">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 </head>
-<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
 
 <body>
 
     <button onclick="main()">Click me</button>
-    <div id="myPlot" style="width:100%;max-width:700px"></div>
+    <div id="plotDiv" style="width:100%;max-width:700px">myPlot</div>
+
 
     <script>
 
@@ -82,12 +84,14 @@
             //     alert(input[i]);
             // }
             const arrays = generateDataForPlotting(input);
-            alert(arrays[0]);
-            alert(arrays[1]);
+            // alert(arrays[0]);
+            // alert(arrays[1]);
 
             var data = [{
                 x: arrays[0],
                 y: arrays[1],
+                // x:[1, 2, 3, 4, 5],
+                // y:[1, 2, 3, 4, 5],
                 mode: "markers",
                 type: "scatter"
             }];
@@ -98,7 +102,7 @@
                 title: "Distance"
             };
 
-            Ploty.newPlot("myPlot", data, layout);
+            Ploty.newPlot("plotDiv", data);
 
         }
 
