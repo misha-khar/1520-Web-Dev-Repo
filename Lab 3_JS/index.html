@@ -11,19 +11,17 @@
 
 <body onload="main()">
 
-
-    <!-- <button onclick="main()">Click me</button> -->
     <div id="myPlot" style="width:100%;max-width:700px"></div>
 
     <script>
 
-        // the distance equation
-        const x = (v0, a, t) => {
+        // the velocity equation
+        const v = (v0, a, t) => {
             return v0 + (a * t);
         };
 
-        // the velocity equation
-        const v = (v0, a, t) => {
+        // the distance equation
+        const x = (v0, a, t) => {
             return (v0 * t) + (0.5 * a * (t * t));
         };
 
@@ -41,14 +39,14 @@
             for (let i = 0; i < 100; i++) {
                 t_arr[i] = i * t_intervals;
                 // also generate distance or velocity array based on plot type
-                // if (plot_type.equals("distance")) {
-                //     // distance equation
-                // y_arr[i] = x(v0, a, t_arr[i]);
-                // }
-                // else {
-                //     // velocity equation
-                y_arr[i] = v(v0, a, t_arr[i]);
-                // }
+                if (plot_type === "distance") {
+                    // distance equation
+                    y_arr[i] = x(v0, a, t_arr[i]);
+                }
+                if (plot_type === "velocity") {
+                    // velocity equation
+                    y_arr[i] = v(v0, a, t_arr[i]);
+                }
             }
             // alert(t_arr);
             // alert(y_arr);
@@ -75,55 +73,57 @@
             return splitInput;
         }
 
-        // the main drive of this script
         main = () => {
-            let input = getParameters();
-            // for (let i = 0; i < input.length; i++) {
-            //     alert(input[i]);
-            // }
-            const arrays = generateDataForPlotting(input);
-            // alert(arrays[0]);
-            // alert(arrays[1]);
 
+            var input = getParameters();
+            const arrays = generateDataForPlotting(input);
+            // Define Data
             var data = [{
-                // x: arrays[0],
-                // y: arrays[1],
-                x: [1, 2, 3, 4, 5],
-                y: [1, 2, 3, 4, 5],
-                mode: "markers",
-                type: "scatter"
+                x: arrays[0],
+                y: arrays[1],
+                mode: "markers"
             }];
 
-            var layout = {
-                xaxis: { range: [0, 100], title: "time" },
-                yaxis: { range: [0, 100], title: "distance" },
-                title: "Distance"
-            };
-
-            Ploty.newPlot("myPlot", data);
-
+            if (input[3] === "distance") {
+                // Define Layout
+                var layout = {
+                    title: {
+                        text: 'Distance',
+                    },
+                    xaxis: {
+                        title: {
+                            text: 'Time',
+                        },
+                    },
+                    yaxis: {
+                        title: {
+                            text: 'Distance',
+                        }
+                    }
+                };
+            }
+            if (input[3] === "velocity") {
+                // Define Layout
+                var layout = {
+                    title: {
+                        text: 'Velocity',
+                    },
+                    xaxis: {
+                        title: {
+                            text: 'Time',
+                        },
+                    },
+                    yaxis: {
+                        title: {
+                            text: 'Velocity',
+                        }
+                    }
+                };
+            }
+            // Display using Plotly
+            Plotly.newPlot("myPlot", data, layout);
         }
-
-        // var data = [{
-        //     // x: arrays[0],
-        //     // y: arrays[1],
-        //     x: [1, 2, 3, 4, 5],
-        //     y: [1, 2, 3, 4, 5],
-        //     mode: "markers",
-        //     type: "scatter"
-        // }];
-
-        // var layout = {
-        //     xaxis: { range: [0, 100], title: "time" },
-        //     yaxis: { range: [0, 100], title: "distance" },
-        //     title: "Distance"
-        // };
-
-        // Ploty.newPlot("myPlot", data);
-
-
     </script>
-
 
 </body>
 
