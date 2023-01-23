@@ -11,8 +11,6 @@
 
 <body onload="main()">
 
-
-    <!-- <button onclick="main()">Click me</button> -->
     <div id="myPlot" style="width:100%;max-width:700px"></div>
 
     <script>
@@ -75,55 +73,65 @@
             return splitInput;
         }
 
-        // the main drive of this script
-        main = () => {
-            let input = getParameters();
-            // for (let i = 0; i < input.length; i++) {
-            //     alert(input[i]);
-            // }
-            const arrays = generateDataForPlotting(input);
-            // alert(arrays[0]);
-            // alert(arrays[1]);
+        // // the main drive of this script
+        // main = () => {
+        //     let input = getParameters();
+        //     // for (let i = 0; i < input.length; i++) {
+        //     //     alert(input[i]);
+        //     // }
+        //     const arrays = generateDataForPlotting(input);
+        //     // alert(arrays[0]);
+        //     // alert(arrays[1]);
 
+        //     var data = [{
+        //         // x: arrays[0],
+        //         // y: arrays[1],
+        //         x: [1, 2, 3, 4, 5],
+        //         y: [1, 2, 3, 4, 5],
+        //         mode: "markers",
+        //         type: "scatter"
+        //     }];
+
+        //     var layout = {
+        //         xaxis: { range: [0, 100], title: "time" },
+        //         yaxis: { range: [0, 100], title: "distance" },
+        //         title: "Distance"
+        //     };
+
+        //     Ploty.newPlot("myPlot", data);
+
+        // }
+
+        main = () => {
+            var inputX = prompt("enter x numbers");
+            var inputY = prompt("enter y numbers");
+            var arrX = inputX.split(" ");
+            var arrY = inputY.split(" ");
+            var inputXArr = [];
+            var inputYArr = [];
+            for(let i=0; i<5; i++){
+                inputXArr[i] = parseFloat(arrX[i]);
+                inputYArr[i] = parseFloat(arrY[i]);
+            }
+
+            // Define Data
             var data = [{
-                // x: arrays[0],
-                // y: arrays[1],
-                x: [1, 2, 3, 4, 5],
-                y: [1, 2, 3, 4, 5],
-                mode: "markers",
-                type: "scatter"
+                x: inputXArr,
+                y: inputYArr,
+                mode: "markers"
             }];
 
+            // Define Layout
             var layout = {
-                xaxis: { range: [0, 100], title: "time" },
-                yaxis: { range: [0, 100], title: "distance" },
-                title: "Distance"
+                xaxis: { range: [0, 10], title: "Square Meters" },
+                yaxis: { range: [0, 10], title: "Price in Millions" },
+                title: "House Prices vs. Size"
             };
 
-            Ploty.newPlot("myPlot", data);
-
+            // Display using Plotly
+            Plotly.newPlot("myPlot", data, layout);
         }
-
-        // var data = [{
-        //     // x: arrays[0],
-        //     // y: arrays[1],
-        //     x: [1, 2, 3, 4, 5],
-        //     y: [1, 2, 3, 4, 5],
-        //     mode: "markers",
-        //     type: "scatter"
-        // }];
-
-        // var layout = {
-        //     xaxis: { range: [0, 100], title: "time" },
-        //     yaxis: { range: [0, 100], title: "distance" },
-        //     title: "Distance"
-        // };
-
-        // Ploty.newPlot("myPlot", data);
-
-
     </script>
-
 
 </body>
 
