@@ -6,10 +6,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="css/style.css" rel="stylesheet">
+
 </head>
 
 <body>
-
+    <script src="js/script.js"></script>
     <h2>John Smith Profile</h2>
     <p>In this profile you can find info about John Smith...</p>
 
@@ -20,9 +21,18 @@
     <section>
         <nav>
             <ul>
-                <li><a href="#">General Info</a></li>
-                <li><a href="#">Education</a></li>
-                <li><a href="#">Hobbies</a></li>
+                <li>
+                    <h4><a id="genInfoLink" href="#">+ General Info</a></h4>
+                    <h4 id="genInfoExpanded"></h4>
+                </li>
+                <li>
+                    <h4><a id="eduLink" href="#">+ Education</a></h4>
+                    <h4 id="eduExpanded"></h4>
+                </li>
+                <li>
+                    <h4><a id="hobLink" href="#">+ Hobbies</a></h4>
+                    <h4 id="hobExpanded"></h4>
+                </li>
             </ul>
         </nav>
 
