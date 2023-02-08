@@ -1,5 +1,13 @@
-document.getElementById("genInfoLink").addEventListener("click", expandGenInfo);
+window.addEventListener("load", addEvListeners);
 
-function expandGenInfo(){
-    document.getElementById("genInfoExpanded").innerHTML = Date();
+addEvListeners(){
+    
 }
+
+
+
+// document.getElementById("genInfoLink").addEventListener("click", expandGenInfo);
+
+// function expandGenInfo(){
+//     document.getElementById("genInfoExpanded").innerHTML = Date();
+// }
