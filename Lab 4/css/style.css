@@ -40,6 +40,19 @@ a:hover {
     background-color: aqua;
 }
 
+.navMain:hover{
+    background-color: aqua;
+}
+
+.navSub{
+    margin-left: 15%;
+}
+
+.navSub:hover{
+    background-color: aqua;
+}
+
+
 article {
     float: left;
     padding: 20px;
