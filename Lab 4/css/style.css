@@ -36,12 +36,13 @@ a {
     color: black;
 }
 
-a:hover {
-    background-color: aqua;
+img{
+    max-height: 200px;
 }
 
 .navMain:hover{
     background-color: aqua;
+    border: 5px black;
 }
 
 .navSub{
