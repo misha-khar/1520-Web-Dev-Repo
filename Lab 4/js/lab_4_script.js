@@ -1,7 +1,6 @@
 // initial setup
 window.addEventListener("load", addListeners);
 
-
 function addListeners() {
     document.getElementById("genInfo").addEventListener("click", expandGenInfo);
     document.getElementById("edu").addEventListener("click", expandEdu);
@@ -129,7 +128,7 @@ function showContactInfo() {
         content.appendChild(phone);
         document.getElementById("articleId").appendChild(content);
     } else {
-        document.getElementById("articleContent").remove(); 
+        document.getElementById("articleContent").remove();
         const content = document.createElement("div");
         content.setAttribute("id", "articleContent");
         const name = document.createElement("p");

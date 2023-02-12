@@ -31,25 +31,20 @@ nav ul {
     padding: 0;
 }
 
-a {
-    text-decoration: none;
-    color: black;
-}
-
-img{
+img {
     max-height: 200px;
 }
 
-.navMain:hover{
+.navMain:hover {
     background-color: aqua;
     border: 5px black;
 }
 
-.navSub{
+.navSub {
     margin-left: 15%;
 }
 
-.navSub:hover{
+.navSub:hover {
     background-color: aqua;
 }
 
