@@ -1,12 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Michael Kharkovski CS-1520 Sp2023 Midterm Project</title>
+    <link href="css/style.css" rel="stylesheet">
+    <script type="javascript" src="js/midtem_script.js"></script>
 </head>
+
 <body>
+    <input type="file" id="file_upload_btn" class="btn">
+
     
+    <input type="button" id="save_data_btn" class="btn" value="Save Data">
+
+    <input type="button" id="load_data_btn" class="btn" value="Load Data">
+
+    <br><br>
+
+    <select name="Select Data Type" id="data_type_dropdown">
+        <option value="temp">Temperature</option>
+        <option value="wind">Wind</option>
+        <option value="precip">Precipitation</option>
+        <option value="stock">Stock Market</option>
+    </select>
+
+    <br><br>
+    Average:
+    <output id="average_output">--avg output--</output>
+    <br>
+    Min:
+    <output id="min_output">--min output--</output>
+    <br>
+    Max:
+    <output id="max_output">--max output--</output>
+    <br><br>
+    <div id="data_div">---data here---</div>
+
+
+
 </body>
+
 </html>
