@@ -26,6 +26,10 @@ function retrieveItemsFromLocalStorage() { // uncomment this function for Versio
     // add this object (push command) into the data array discribed
     // above
     // return the array with shopping item objects
+    const itemMap = new Map();
+    for (key in localStorage) {
+        itemMap.set(key, localStorage.getItem(key));
+    }
 
 
 
