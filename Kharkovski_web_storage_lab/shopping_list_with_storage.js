@@ -15,7 +15,8 @@ function addListeners() {
         selectAllItems);
 }
 
-function retrieveItemsFromLocalStorage() { // uncomment this function for Version 2
+function retrieveItemsFromLocalStorage() { 
+    // uncomment this function for Version 2
     // create an empty data array. This array will be populated
     // with item objects from the local storage
     // An item object will have only one pair of (key,value)
@@ -110,9 +111,9 @@ function addNewItemToTheShoppingList() {
     itemListDiv.removeChild(quantityInputTextElement);
     itemListDiv.removeChild(document.getElementById("addNewButtonID"));
 
-
+    
     //!    // adding item in the local storage
-
+    localStorage.setItem(itemTextDescriptionElement.value, quantityInputTextElement.value);
 
 }
 
@@ -135,7 +136,7 @@ function deleteSelectedItems() {
 
 
             //!            // add command to remove the item from the local storage here
-
+            localStorage.removeItem(checkBoxList[i]);
 
             // removing the deleted item from the shopping list area
             checkBoxList[i].parentElement.remove();
