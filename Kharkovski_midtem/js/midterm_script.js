@@ -11,13 +11,16 @@ var dataDiv;
 var outputBox;
 var rawData;
 var fr;
-var temp = new Array;
-var wind = new Array;
-var precip = new Array;
-var stock = new Array;
+var tempArr = new Array;
+var windArr = new Array;
+var precipArr = new Array;
+var stockArr = new Array;
 var yAxisLabel;
+var yAxisData;
 var xAxisLabel = "Days Since Jan/01/2023";
 var xAxisData = new Array;
+var graphLabel;
+var dataLoaded = false;
 
 function setup() {
     configDOMRefs();
@@ -45,94 +48,169 @@ const configDOMListeners = () => {
 }
 
 function fileUploadFunc() {
-    fr = new FileReader();
-    fr.readAsText(fileUploadBtn.files[0]);
-    fr.onload = function () {
-        rawData = fr.result;
-        outputBox.innerHTML = "raw data: " + rawData;
-        parseRawData(rawData);
+    if (!dataLoaded) {
+        fr = new FileReader();
+        fr.readAsText(fileUploadBtn.files[0]);
+        fr.onload = function () {
+            rawData = fr.result;
+            parseRawData(rawData);
+            if (dataTypeDropdown.value == 'select') {
+            } else {
+                showData();
+            }
+        }
+    } else {
+        tempArr = new Array;
+        windArr = new Array;
+        precipArr = new Array;
+        stockArr = new Array;
+        xAxisData = new Array;
+        fr = new FileReader();
+        fr.readAsText(fileUploadBtn.files[0]);
+        fr.onload = function () {
+            rawData = fr.result;
+            parseRawData(rawData);
+            if (dataTypeDropdown.value == 'select') {
+            } else {
+                showData();
+            }
+        }
     }
 }
 
 function parseRawData(dataSrc) {
-    // var data = dataSrc;
     var data = dataSrc.split(/\s+/);
     // var data = dataSrc.replace( /\n/g, " " ).split( " " );
-    // console.log(data);
-    // console.log(data.length);
     for (let i = 0; i < data.length; i += 4) {
-        temp.push(data[i]);
-        wind.push(data[i + 1]);
-        precip.push(data[i + 2]);
-        stock.push(data[i + 3]);
+        tempArr.push(data[i]);
+        windArr.push(data[i + 1]);
+        precipArr.push(data[i + 2]);
+        stockArr.push(data[i + 3]);
     }
     let tmax = data.length / 4;
-    console.log(tmax);
     for (let i = 0; i < tmax; i++) {
         xAxisData.push(i);
     }
-
-    // console.log(temp);
-    // console.log(wind);
-    // console.log(precip);
-    // console.log(stock);
-    // showData();
 }
 
 function showData() {
-    var dataType = dataTypeDropdown.value;
-    if (dataType == "select") {
-        alert("please select a type");
+    if (dataTypeDropdown.value == "select") {
+        console.log("please select a type");
     } else {
-
-        var dataToPlot;
-        switch (dataType) {
+        switch (dataTypeDropdown.value) {
             case "temp":
-                dataToPlot = temp;
+                if (fileUploadBtn.files.length > 0 || dataLoaded) {
+                    yAxisData = tempArr;
+                }
                 yAxisLabel = "Temperature (oF)";
+                graphLabel = "Temperature History";
                 break;
             case "wind":
-                dataToPlot = wind;
-                yAxisLabel = "Wind (mph))";
+                if (fileUploadBtn.files.length > 0 || dataLoaded) {
+                    yAxisData = windArr;
+                }
+                yAxisLabel = "Wind (mph)";
+                graphLabel = "Wind History";
                 break;
             case "precip":
-                dataToPlot = precip;
+                if (fileUploadBtn.files.length > 0 || dataLoaded) {
+                    yAxisData = precipArr;
+                }
                 yAxisLabel = "Precipitation (in)";
+                graphLabel = "Precipitation History";
                 break;
             case "stock":
-                dataToPlot = stock;
+                if (fileUploadBtn.files.length > 0 || dataLoaded) {
+                    yAxisData = stockArr;
+                }
                 yAxisLabel = "Stock Market (pts)";
+                graphLabel = "Stock Market History";
                 break;
             default:
-                console.log("error");
+                console.log("error in showData");
                 break;
         }
     }
+    if (fileUploadBtn.files.length > 0 || dataLoaded) {
+        makeGraph();
+    }
+}
 
-
+function generateAvgMinMax() {
+    var total = 0;
+    var avg;
+    var min = parseFloat(yAxisData[0]);
+    var max = parseFloat(yAxisData[0]);
+    for (let i = 0; i < yAxisData.length; i++) {
+        let num = parseFloat(yAxisData[i])
+        total += num;
+        if (num < min) {
+            min = num;
+        }
+        if (num > max) {
+            max = num;
+        }
+    }
+    avg = total / yAxisData.length;
+    avgOutput.innerHTML = avg.toFixed(1);
+    minOutput.innerHTML = min.toFixed(1);
+    maxOutput.innerHTML = max.toFixed(1);
 }
 
 function makeGraph() {
-
-
+    generateAvgMinMax();
+    if (document.getElementById("myPlot")) {
+        document.getElementById("myPlot").remove();
+    }
+    const graph = document.createElement("div");
+    graph.setAttribute("id", "myPlot");
+    graph.setAttribute("width", "100%");
+    graph.setAttribute("max-width", "700px");
+    dataDiv.appendChild(graph);
+    var data = [{
+        x: xAxisData,
+        y: yAxisData,
+        mode: "lines+markers"
+    }];
+    var layout = {
+        title: {
+            text: graphLabel,
+        },
+        xaxis: {
+            title: {
+                text: xAxisLabel,
+            },
+        },
+        yaxis: {
+            title: {
+                text: yAxisLabel,
+            }
+        }
+    };
+    Plotly.newPlot("myPlot", data, layout);
 }
 
 function saveDataFunc() {
-    alert("test");
-
-
+    if (fileUploadBtn.files.length > 0) {
+        localStorage.setItem("rawData", rawData);
+    }
 }
 
 function loadDataFunc() {
-    alert("loading data... existing data cleared");
-    temp = new Array;
-    wind = new Array;
-    precip = new Array;
-    stock = new Array;
-    console.log(temp);
-    console.log(wind);
-    console.log(precip);
-    console.log(stock);
+    if (localStorage.getItem('rawData') != null) {
+        dataLoaded = true;
+        tempArr = new Array;
+        windArr = new Array;
+        precipArr = new Array;
+        stockArr = new Array;
+        xAxisData = new Array;
+        let rawData = localStorage.getItem('rawData');
+        parseRawData(rawData);
+        if (dataTypeDropdown.value == 'select') {
+        } else {
+            showData();
+        }
+    }
 }
 
 
