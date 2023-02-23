@@ -15,7 +15,7 @@ function addListeners() {
         selectAllItems);
 }
 
-function retrieveItemsFromLocalStorage() { 
+function retrieveItemsFromLocalStorage() {
     // uncomment this function for Version 2
     // create an empty data array. This array will be populated
     // with item objects from the local storage
@@ -27,23 +27,37 @@ function retrieveItemsFromLocalStorage() {
     // add this object (push command) into the data array discribed
     // above
     // return the array with shopping item objects
-    const itemMap = new Map();
-    for (key in localStorage) {
-        itemMap.set(key, localStorage.getItem(key));
+    // Create an empty data array
+    let array = [];
+
+    // Loop over all the local storage items using a FOR loop
+    for (let i = 0; i < localStorage.length; i++) {
+        // Retrieve the key and value for each item
+        let key = localStorage.key(i);
+        let val = localStorage.getItem(key);
+        // Create an object with the key-value pair
+        let obj = {};
+        obj[key] = val;
+        // Add the object to the data array
+        array.push(obj);
     }
 
-
+    // Return the array with shopping item objects
+    return array;
 
 }
 
 // my gift to you. I am giving this function ready to use // uncomment this for Version 2
 function populateShoppingList(data) {
-    for (datum of data) {
-        // there is only one pair of key, value per item object
-        // this for loop is just to retrieve them
-        for (var [key, value] of Object.entries(datum)) { }
-        addItemToShoppingListArea(key, value);
+    if (data) {
+        for (datum of data) {
+            // there is only one pair of key, value per item object
+            // this for loop is just to retrieve them
+            for (var [key, value] of Object.entries(datum)) { }
+            addItemToShoppingListArea(key, value);
+        }
     }
+
 }
 
 function addItemToShoppingListArea(key, value) {
@@ -111,9 +125,14 @@ function addNewItemToTheShoppingList() {
     itemListDiv.removeChild(quantityInputTextElement);
     itemListDiv.removeChild(document.getElementById("addNewButtonID"));
 
-    
+
     //!    // adding item in the local storage
-    localStorage.setItem(itemTextDescriptionElement.value, quantityInputTextElement.value);
+    if (itemTextDescriptionElement.value && quantityInputTextElement.value) {
+        localStorage.setItem(itemTextDescriptionElement.value, quantityInputTextElement.value);
+    }
+
+
+
 
 }
 
@@ -136,7 +155,10 @@ function deleteSelectedItems() {
 
 
             //!            // add command to remove the item from the local storage here
-            localStorage.removeItem(checkBoxList[i]);
+            let key = checkBoxList[i].id;
+            if (key) {
+                localStorage.removeItem(key);
+            }
 
             // removing the deleted item from the shopping list area
             checkBoxList[i].parentElement.remove();
