@@ -30,15 +30,15 @@ function retrieveItemsFromLocalStorage() {
     // Create an empty data array
     let array = [];
 
-    // Loop over all the local storage items using a FOR loop
+    // loop over each item in localstorage
     for (let i = 0; i < localStorage.length; i++) {
-        // Retrieve the key and value for each item
+        // retrieve key
         let key = localStorage.key(i);
         let val = localStorage.getItem(key);
-        // Create an object with the key-value pair
+        // using key and val create an object with those 
         let obj = {};
         obj[key] = val;
-        // Add the object to the data array
+        // push object to array
         array.push(obj);
     }
 
@@ -124,16 +124,10 @@ function addNewItemToTheShoppingList() {
     itemListDiv.removeChild(itemTextDescriptionElement);
     itemListDiv.removeChild(quantityInputTextElement);
     itemListDiv.removeChild(document.getElementById("addNewButtonID"));
-
-
-    //!    // adding item in the local storage
+    // adding item in the local storage
     if (itemTextDescriptionElement.value && quantityInputTextElement.value) {
         localStorage.setItem(itemTextDescriptionElement.value, quantityInputTextElement.value);
     }
-
-
-
-
 }
 
 function selectAllItems() {
@@ -152,14 +146,11 @@ function deleteSelectedItems() {
     // by doing so, the checkbox and the associated label are removed
     for (let i = checkBoxList.length - 1; i >= 0; i--) {
         if (checkBoxList[i].checked === true) {
-
-
-            //!            // add command to remove the item from the local storage here
+            // add command to remove the item from the local storage here
             let key = checkBoxList[i].id;
             if (key) {
                 localStorage.removeItem(key);
             }
-
             // removing the deleted item from the shopping list area
             checkBoxList[i].parentElement.remove();
         }
