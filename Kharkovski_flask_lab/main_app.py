@@ -21,7 +21,7 @@ aboutpage = """
         <title>About Page</title>
     </head> 
     <body> 
-        
+        about page
     </body> 
 </html>
 """
@@ -33,7 +33,7 @@ contactpage = """
         <title>Contact Page</title> 
     </head> 
     <body> 
-         
+        contact page
     </body> 
 </html> 
 """
@@ -45,16 +45,15 @@ submittedpage = """
         <title>Submitted Page</title> 
     </head> 
     <body> 
-        
+        Submitted form page
     </body> 
 </html> 
 """
 
 
 @app.route("/")
-def default():
-    print("redirecting to mainpage_controller for the first time")
-    return redirect(url_for("login_controller"))
+def contactController():
+    return mainpage
 
 
 @app.route("/about")
