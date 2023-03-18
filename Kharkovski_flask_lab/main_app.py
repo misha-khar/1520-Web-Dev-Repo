@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, abort, url_for, redirect
 app = Flask(__name__)
 
 mainpage = """
@@ -14,55 +14,60 @@ mainpage = """
 </html>
 """
 
-formpage = """ 
+aboutpage = """ 
 <!DOCTYPE html> 
 <html> 
     <head>
-        <title>Basic form</title>
+        <title>About Page</title>
     </head> 
     <body> 
-        <form action="" method="post"> 
-            Enter a number: <input type="text" name="anumber" />
-            <br/> 
-            Enter a string: <input type="text" name="astring" /> 
-            <br/>
-            <input type="submit" value="submit" /> 
-        </form> 
+        
     </body> 
 </html>
 """
 
-presentpage = """ 
+contactpage = """ 
 <!DOCTYPE html> 
 <html> 
     <head> 
-        <title>Present data!</title> 
+        <title>Contact Page</title> 
     </head> 
     <body> 
-        You entered this number: {} 
-        <br/> 
-        You entered this string: {} 
+         
+    </body> 
+</html> 
+"""
+
+submittedpage = """ 
+<!DOCTYPE html> 
+<html> 
+    <head> 
+        <title>Submitted Page</title> 
+    </head> 
+    <body> 
+        
     </body> 
 </html> 
 """
 
 
 @app.route("/")
-def contactController():
-    return "<h2> This is the bar page </h2>"
+def default():
+    print("redirecting to mainpage_controller for the first time")
+    return redirect(url_for("login_controller"))
 
 
 @app.route("/about")
 def aboutController():
-    return "<h1> This is the foo page </h1>"
+    return aboutpage
 
 
 @app.route("/contact", methods=["GET", "POST"])
 def main():
     if request.method == "GET":
-        return formpage
+        return contactpage
     else:
-        return presentpage.format(request.form["anumber"], request.form["astring"])
+        return submittedpage
 
 
 if __name__ == "__main__":
