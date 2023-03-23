@@ -1,0 +1,15 @@
+{% extends "basepage.html" %}
+
+{% block title %} Contact Page {% endblock %}
+
+{% block body %}
+<form action="" method="post">
+    Name: <input type="text" name="name" />
+    </br>
+    Email: <input type="text" name="email" />
+    </br>
+    <input type="submit" value="submit" />
+</form>
+</br>
+<a href="{{ linkToMain }}">back to main page</a>
+{% endblock %}

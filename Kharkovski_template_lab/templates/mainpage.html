@@ -1,0 +1,21 @@
+{% extends "basepage.html" %}
+
+{% block title %} Mainpage {% endblock %}
+
+{% block body %}
+<h1>Main Page</h1>
+<h2>Welcome to Wikipedia, the free encyclopedia that anyone can contribute</h2>
+<p>6,467,051 articles in English
+<p>
+<ul>
+    <li>The arts </li>
+    <li>Biography </li>
+    <li>Geography </li>
+    <li>History </li>
+    <li>Mathematics </li>
+    <li>Technology </li>
+</ul>
+<a href="{{ linkToAbout }}">About</a>
+</br>
+<a href="{{ linkToContact }}">Contact Us</a>
+{% endblock %}

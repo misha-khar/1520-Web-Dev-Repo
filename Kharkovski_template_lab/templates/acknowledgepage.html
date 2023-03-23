@@ -1,0 +1,13 @@
+{% extends "basepage.html" %}
+
+{% block title %} Acknowledge Page {% endblock %}
+
+{% block body %}
+<h1>Thanks, {{ name }} </h1>
+<p>Your request has been submitted!
+<p>
+<p>We will contact you via your email: {{ email }}
+<p>
+    </br>
+    <a href="{{ linkToMain }}">back to main page</a>
+    {% endblock %}
