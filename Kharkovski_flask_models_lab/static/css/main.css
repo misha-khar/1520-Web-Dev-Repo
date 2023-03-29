@@ -1,0 +1,50 @@
+body {
+    margin: auto;
+    font-family: sans-serif;
+    text-align: center;
+}
+
+h1 {
+    /* text-align: left; */
+    font-family: sans-serif;
+}
+
+.layout {
+    display: flex;
+    gap: 25px;
+
+    justify-content: center;
+}
+
+#headerTitle{
+    color: blue;
+    font-style: italic;
+}
+
+#navMenu{
+    margin-top: 25px;
+}
+
+a{
+    text-decoration: none;
+    margin-right: 10px;
+}
+
+
+table,
+th,
+td {
+    border: 1px solid;
+    margin: auto;
+}
+
+th,
+td {
+    min-width: 100px;
+    text-align: center;
+}
+
+form {
+    padding-top: 20px;
+    display: inline-block;
+}
