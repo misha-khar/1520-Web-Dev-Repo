@@ -9,17 +9,17 @@
 </head>
 
 <body>
-    <section class="layout">
+    <div class="header-div">
         <div id="header-title">
             <h1 >CS-1520 Blog Corner</h1>
         </div>
         <div id="nav-menu">
             <nav>
-                <a id="nav-home" href="{{ refToHome }}">Home</a>
-                <a id="nav-new-blog" href="{{ refToNewBlog }}">New Blog</a>
+                <a class="nav-item" id="nav-home" href="{{ refToHome }}">Home</a>
+                <a class="nav-item" id="nav-new-blog" href="{{ refToNewBlog }}">New Blog</a>
             </nav>
         </div>
-    </section>
+    </div>
 
     <br>
     {% block body %} {% endblock %}

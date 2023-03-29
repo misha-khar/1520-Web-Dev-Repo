@@ -9,9 +9,18 @@ h1 {
     font-family: sans-serif;
 }
 
-.layout {
+h2{
+    font: bold;
+}
+
+.header-div {
     display: flex;
     gap: 100px;
+    justify-content: center;
+}
+
+#add-blog-div {
+    width: 80%;
     justify-content: center;
 }
 
@@ -24,14 +33,19 @@ h1 {
     margin-top: 25px;
 }
 
-a {
+.nav-item {
+    margin-right: 20px;
+}
+
+/* a {
     text-decoration: none;
     margin-right: 30;
-}
+} */
 
 
 #nav-home {
     color: black;
+    text-decoration: none;
 }
 
 #nav-new-blog {
@@ -41,6 +55,7 @@ a {
     color: white;
     padding: 8px 13px;
     cursor: pointer;
+    text-decoration: none;
 }
 
 #new-blog-header {
@@ -68,6 +83,7 @@ a {
     cursor: pointer;
 }
 
+
 #delete-button {
     background-color: red;
     border: none;
@@ -80,17 +96,34 @@ a {
 
 #main-page-blog-title {
     color: red;
+    text-decoration: none;
+    justify-content: left;
+
 }
 
 #main-page-blog-author {
     color: black;
+    font-size: bold;
+    text-decoration: none;
+    justify-content: left;
+}
+
+#main-title{
+    text-align: left;
+    padding-left: 25%;
+}
+
+#main-author{
+    font-weight: bold !important; 
+    text-align: left;
+    padding-left: 25%;
 }
 
 
 table,
 th,
 td {
-    border: 1px solid;
+    /* border: 1px solid; */
     margin: auto;
 }
 

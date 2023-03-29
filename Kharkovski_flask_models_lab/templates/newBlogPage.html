@@ -6,26 +6,27 @@
 
 {% block body %}
 <h2 id="new-blog-header"> Add a New Blog </h2>
-
-<form id="new-blog-form" action="/new-blog" method="POST">
-    <label class="input-label" for="blog-title">Blog Title:</label>
-    <br>
-    <input type="text" name="blog-title" id="blog-title">
-    <br><br>
-    <label class="input-label" for="blog-body">Blog Body:</label>
-    <br>
-    <textarea type="text" name="blog-body" id="blog-body"></textarea>
-    <br><br>
-    <label class="input-label" for="blog-author">Blog Author:</label>
-    <br>
-    <select name="blog-author" id="blog-author">
-        <option value="maria">Maria</option>
-        <option value="scott">Scott</option>
-        <option value="jen">Jen</option>
-        <option value="adam">Adam</option>
-    </select>
-    <br><br>
-    <input type="submit" id="blog-submit" value="Add Blog">
-</form>
+<div id="add-blog-div">
+    <form id="new-blog-form" action="/new-blog" method="POST">
+        <label class="input-label" for="blog-title">Blog Title:</label>
+        <br>
+        <input type="text" name="blog-title" id="blog-title">
+        <br><br>
+        <label class="input-label" for="blog-body">Blog Body:</label>
+        <br>
+        <textarea type="text" name="blog-body" id="blog-body"></textarea>
+        <br><br>
+        <label class="input-label" for="blog-author">Blog Author:</label>
+        <br>
+        <select name="blog-author" id="blog-author">
+            <option value="maria">Maria</option>
+            <option value="scott">Scott</option>
+            <option value="jen">Jen</option>
+            <option value="adam">Adam</option>
+        </select>
+        <br><br>
+        <input type="submit" id="blog-submit" value="Add Blog">
+    </form>
+</div>
 
 {% endblock %}

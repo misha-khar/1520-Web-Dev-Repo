@@ -5,26 +5,18 @@
 {% endblock %}
 
 {% block body %}
-<h1> Main Page </h1>
 <div id="main-page-content">
     {% if blogs %}
-    <table>
-        {% for blog in blogs %}
-        <tr>
-            <td>
-                <h2 id="main-page-blog-title">
-                    <a href="/blog/{{blog.id}}">{{ blog.title }}</a>
-                </h2>
-            </td>
-            <td>
-                <p id="main-page-blog-author">
-                    <a href="/blog/{{blog.id}}">Written by {{
-                        blog.author }} </a>
-                </p>
-            </td>
-        </tr>
-        {% endfor %}
-    </table>
+    {% for blog in blogs %}
+    <h2 id="main-title">
+        <a id="main-page-blog-title" href="/blog/{{blog.id}}">{{ blog.title }}</a>
+    </h2>
+    <p id="main-author">
+        <a id="main-page-blog-author" href="/blog/{{blog.id}}">Written by {{
+            blog.author }} </a>
+    </p>
+    {% endfor %}
+
     {% else %}
     <h2> There are no blog posts to be displayed. Please create a blog </h2>
     {% endif %}
