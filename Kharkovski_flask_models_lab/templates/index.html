@@ -11,8 +11,17 @@
     <table>
         {% for blog in blogs %}
         <tr>
-            <td> {{ blog.title }} </td>
-            <td> Written by {{ blog.author }} </td>
+            <td>
+                <h2 id="main-page-blog-title">
+                    <a href="/blog/{{blog.id}}">{{ blog.title }}</a>
+                </h2>
+            </td>
+            <td>
+                <p id="main-page-blog-author">
+                    <a href="/blog/{{blog.id}}">Written by {{
+                        blog.author }} </a>
+                </p>
+            </td>
         </tr>
         {% endfor %}
     </table>
