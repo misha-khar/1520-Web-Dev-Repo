@@ -6,4 +6,18 @@
 
 {% block body %}
 <h1> Main Page </h1>
+<div id="main-page-content">
+    {% if blogs %}
+    <table>
+        {% for blog in blogs %}
+        <tr>
+            <td> {{ blog.title }} </td>
+            <td> Written by {{ blog.author }} </td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+    <h2> There are no blog posts to be displayed. Please create a blog </h2>
+    {% endif %}
+</div>
 {% endblock %}

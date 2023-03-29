@@ -11,24 +11,73 @@ h1 {
 
 .layout {
     display: flex;
-    gap: 25px;
-
+    gap: 100px;
     justify-content: center;
 }
 
-#headerTitle{
+#header-title {
     color: blue;
     font-style: italic;
 }
 
-#navMenu{
+#nav-menu {
     margin-top: 25px;
 }
 
-a{
+a {
     text-decoration: none;
-    margin-right: 10px;
+    margin-right: 30;
 }
+
+#nav-home {
+    color: black;
+}
+
+#nav-new-blog {
+    /* border: 2px solid red; */
+    border-radius: 8px;
+    background-color: red;
+    color: white;
+    padding: 8px 13px;
+    cursor: pointer;
+}
+
+#new-blog-header {
+    color: red;
+}
+
+.input-label {
+    /* text-align: left; */
+    float: left;
+    margin-bottom: 5px;
+}
+
+#blog-author {
+    float: left;
+}
+
+#new-blog-form {}
+
+#blog-submit {
+    background-color: red;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+#delete-button {
+    background-color: red;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
 
 
 table,

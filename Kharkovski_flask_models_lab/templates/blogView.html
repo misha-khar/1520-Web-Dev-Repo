@@ -1,0 +1,20 @@
+{% extends 'basePage.html' %}
+{% block head %}
+<title>Blog View</title>
+{% endblock %}
+{% block body %}
+<div class="blog-view-content">
+    <h1> Blog View </h1>
+    <br><br>
+    {{ blog.title }}
+    <br><br>
+    {{ blog.author }}
+    <br><br>
+    {{ blog.body }}
+    <br><br>
+
+    <form action="/" method="POST">
+        <a id="delete-button" href="/delete/{{blog.id}}">Delete</a>
+    </form>
+</div>
+{% endblock %}
