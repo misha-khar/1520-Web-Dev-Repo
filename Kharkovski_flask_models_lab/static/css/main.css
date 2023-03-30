@@ -9,18 +9,13 @@ h1 {
     font-family: sans-serif;
 }
 
-h2{
+h2 {
     font: bold;
 }
 
 .header-div {
     display: flex;
     gap: 100px;
-    justify-content: center;
-}
-
-#add-blog-div {
-    width: 80%;
     justify-content: center;
 }
 
@@ -36,12 +31,6 @@ h2{
 .nav-item {
     margin-right: 20px;
 }
-
-/* a {
-    text-decoration: none;
-    margin-right: 30;
-} */
-
 
 #nav-home {
     color: black;
@@ -62,18 +51,19 @@ h2{
     color: red;
 }
 
-.input-label {
-    /* text-align: left; */
-    float: left;
-    margin-bottom: 5px;
+#add-blog-div {
+    /* max-width: 75%; */
+    /* justify-content: center; */
+    /* padding-left: 15%; */
+    text-align: left;
+    padding-left: 20%
 }
 
-#blog-author {
-    float: left;
+.new-blog-input {
+    width: 70%;
 }
 
-
-#blog-submit {
+#new-blog-submit {
     background-color: red;
     border: none;
     color: white;
@@ -108,32 +98,32 @@ h2{
     justify-content: left;
 }
 
-#main-title{
+#main-title {
     text-align: left;
     padding-left: 25%;
 }
 
-#main-author{
-    font-weight: bold !important; 
+#main-author {
+    font-weight: bold !important;
     text-align: left;
     padding-left: 25%;
 }
 
+.blog-view-content {
+    text-align: left;
+    padding-left: 5%;
 
-table,
-th,
-td {
-    /* border: 1px solid; */
-    margin: auto;
 }
 
-th,
-td {
-    min-width: 100px;
-    text-align: center;
+#b-view-title {
+    color: red;
+    margin-bottom: 5px;
 }
 
-form {
-    padding-top: 20px;
-    display: inline-block;
+#b-view-author {
+    color: black;
+}
+
+#b-view-body {
+    color: black;
 }

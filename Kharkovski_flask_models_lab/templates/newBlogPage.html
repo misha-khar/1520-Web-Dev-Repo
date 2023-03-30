@@ -8,24 +8,24 @@
 <h2 id="new-blog-header"> Add a New Blog </h2>
 <div id="add-blog-div">
     <form id="new-blog-form" action="/new-blog" method="POST">
-        <label class="input-label" for="blog-title">Blog Title:</label>
+        <label class="input-label" for="new-blog-title">Blog Title:</label>
         <br>
-        <input type="text" name="blog-title" id="blog-title">
+        <input class="new-blog-input" type="text" name="blog-title" id="new-blog-title">
         <br><br>
-        <label class="input-label" for="blog-body">Blog Body:</label>
+        <label class="input-label" for="new-blog-body">Blog Body:</label>
         <br>
-        <textarea type="text" name="blog-body" id="blog-body"></textarea>
+        <textarea class="new-blog-input" type="text" name="blog-body" id="new-blog-body"></textarea>
         <br><br>
-        <label class="input-label" for="blog-author">Blog Author:</label>
+        <label class="input-label" for="new-blog-author">Blog Author:</label>
         <br>
-        <select name="blog-author" id="blog-author">
-            <option value="maria">Maria</option>
-            <option value="scott">Scott</option>
-            <option value="jen">Jen</option>
-            <option value="adam">Adam</option>
+        <select class="new-blog-input" name="blog-author" id="new-blog-author">
+            <option value="Maria">Maria</option>
+            <option value="Scott">Scott</option>
+            <option value="Jen">Jen</option>
+            <option value="Adam">Adam</option>
         </select>
         <br><br>
-        <input type="submit" id="blog-submit" value="Add Blog">
+        <input type="submit" id="new-blog-submit" value="Add Blog">
     </form>
 </div>
 
