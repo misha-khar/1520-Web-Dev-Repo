@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Login Page</title>
+{% endblock %}
+
+{% block body %}
+<div id="login-page-content">
+    <p>Log in! - Chat App</p>
+    <form action="" method="post">
+        Username: <input type="text" name="user" />
+        <br />
+        Password: <input type="text" name="pass" />
+        <br />
+        <input type="submit" value="Sign In" />
+        <a href="{{ refToRegister }}">Register</a>
+    </form>
+    
+</div>
+{% endblock %}
