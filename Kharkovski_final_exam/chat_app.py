@@ -1,6 +1,7 @@
-from flask import Flask, request, abort, url_for, redirect, render_template
+from flask import Flask, jsonify, request, abort, url_for, redirect, render_template
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
+import json
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
@@ -50,12 +51,12 @@ def login_controller():
         if user is not None:
             return redirect(url_for("profile", username=username))
         else:
-            return render_template("loginPage.html", error="Incorrect username or password", refToRegister=url_for("register_controller"))
+            return render_template("loginPage.html", errorMessage="Incorrect username or password", refToRegister=url_for("register_controller"))
 
     elif request.method == "GET":
-        return render_template("loginPage.html", refToRegister=url_for("register_controller"))
+        return render_template("loginPage.html", refToRegister=url_for("register_controller"), errorMessage="")
 
-    return render_template("loginPage.html", refToRegister=url_for("register_controller"))
+    return render_template("loginPage.html", refToRegister=url_for("register_controller"), errorMessage="")
 
 
 @app.route("/register/", methods=["GET", "POST"])
@@ -65,10 +66,6 @@ def register_controller():
         email = request.form['email']
         password = request.form['password']
         confirm_password = request.form['confirm_password']
-        # username = 'misha'
-        # email = 'test@gmail.com'
-        # password = 'abc'
-        # confirm_password = 'abc'
         if password != confirm_password:
             # Passwords don't match - display error message
             error = "Passwords don't match. Please try again."
@@ -97,15 +94,38 @@ def profile(username=None):
 
 @app.route("/logout/")
 def unlogger():
-    return redirect(url_for("login_controller"))
+    return render_template("logoutPage.html", refToLogin=url_for("login_controller"))
 
 
-# @app.route("/new_message/", methods=["POST"])
-# def new_message():
+@app.route("/new_message/", methods=["POST"])
+def new_message():
+    try:
+        message = request.form["message"]
+        user = request.form["username"]
+        timestamp = datetime.now()
+        new_message = Chat(message=message, user=user, timestamp=timestamp)
+        db.session.add(new_message)
+        db.session.commit()
+        return "success"
+    except Exception as e:
+        print(e)
+        return "error"
 
 
-# @app.route("/messages/")
-# def messages():
+@app.route("/messages/")
+def messages():
+    try:
+        rawMessages = Chat.query.order_by(Chat.timestamp.desc()).all()
+        results = []
+        for message in rawMessages:
+            res = {
+                message.user: message.message,
+            }
+            results.append(res)
+        return jsonify(results)
+    except Exception as e:
+        print(e)
+        return "error"
 
 
 if __name__ == "__main__":
