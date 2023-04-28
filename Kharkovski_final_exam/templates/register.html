@@ -6,14 +6,14 @@
 
 {% block body %}
 <div id="register-page-content">
-    <form action="" method="post">
-        Username: <input type="text" name="user" />
+    <form action="{{ url_for('register_controller')}}" method="post">
+        Username: <input type="text" name="username" id="username" required />
         <br />
-        email: <input type="text" name="email" />
+        email: <input type="text" name="email" id="email" required />
         <br />
-        Password: <input type="text" name="pass" />
+        Password: <input type="text" name="password" id="password" required />
         <br />
-        Retype Password: <input type="text" name="pass" />
+        Retype Password: <input type="text" name="confirm_password" id="confirm_password" required />
         <br />
         <input type="submit" value="Register" />
     </form>
