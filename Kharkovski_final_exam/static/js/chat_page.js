@@ -54,9 +54,3 @@ function fetchNewData() {
         });
     window.setTimeout(fetchNewData, timeout);
 }
-
-
-
-
-
-
